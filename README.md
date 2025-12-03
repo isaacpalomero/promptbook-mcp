@@ -71,31 +71,58 @@ search_prompts("refactor typescript to use dependency injection")
 
 ### Prerequisites
 
-- Python 3.9+ OR Docker
+- **uv** (recommended) OR Python 3.9+
 - 2GB RAM minimum
 - macOS, Linux, or Windows
 
-### Detailed Setup
+### Method 1: Using uv (Recommended ⚡)
 
-#### Automated Setup (Recommended)
+**Why uv?** 10-100x faster installs, reproducible environments, zero dependency conflicts.
+
+```bash
+# 1. Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Clone repository
+git clone https://github.com/isaacpalomero/promptbook-mcp.git
+cd promptbook-mcp
+
+# 3. Setup environment (creates venv + installs deps)
+./setup-uv.sh
+
+# 4. Activate and run
+source .venv/bin/activate
+python mcp_server.py
+```
+
+**Development workflow:**
+```bash
+make install-dev    # Setup dev environment
+make test          # Run tests with coverage
+make typecheck     # Run mypy --strict
+make lint          # Run flake8
+make quality       # Run all checks
+```
+
+### Method 2: Traditional Python
 
 ```bash
 # Clone repository
 git clone https://github.com/isaacpalomero/promptbook-mcp.git
 cd promptbook-mcp
 
-# Run setup script
-chmod +x setup.sh
-./setup.sh
-
-# Activate virtual environment
+# Create virtual environment
+python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.lock
 
 # Start server
 python mcp_server.py
 ```
 
-#### Docker Method
+### Method 3: Docker
 
 ```bash
 # Clone repository
