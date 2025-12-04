@@ -98,7 +98,7 @@ No changes needed! Docker image builds are now faster and more reliable.
 - **Backwards compatible**: `requirements.lock` works with pip
 - **No breaking changes**: All existing scripts/workflows still work
 - **Optional**: uv usage is recommended but not required
-- **Python versions**: Tested on 3.9, 3.10, 3.11, 3.12
+- **Python versions**: Requires 3.10+, tested on 3.11, 3.12
 
 ## 📚 References
 
