@@ -49,7 +49,7 @@ from pathlib import Path; \
 from prompt_rag import PromptRAG; \
 from mcp.server import Server; \
 prompts_dir = Path(os.environ.get('PROMPTS_DIR', '/app/prompts')); \
-assert prompts_dir.exists(), 'prompts_dir missing'; \
+assert prompts_dir.exists(), f'Prompts directory missing: {prompts_dir}'; \
 print('healthy')" || exit 1
 
 CMD ["python", "mcp_server.py"]
