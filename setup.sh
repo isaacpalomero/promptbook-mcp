@@ -154,33 +154,33 @@ echo "📚 Next steps:"
 echo ""
 echo "  1. Activate the environment:"
 if [ "$USE_UV" = true ]; then
-    echo "     ${GREEN}source .venv/bin/activate${NC}"
+    echo -e "     ${GREEN}source .venv/bin/activate${NC}"
 else
-    echo "     ${GREEN}source .venv/bin/activate${NC}  (already activated)"
+    echo -e "     ${GREEN}source .venv/bin/activate${NC}  (already activated)"
 fi
 echo ""
 echo "  2. Start the MCP server:"
 if [ "$USE_UV" = true ]; then
-    echo "     ${GREEN}uv run python mcp_server.py${NC}"
+    echo -e "     ${GREEN}uv run python mcp_server.py${NC}"
 else
-    echo "     ${GREEN}python mcp_server.py${NC}"
+    echo -e "     ${GREEN}python mcp_server.py${NC}"
 fi
 echo ""
 echo "  3. Run quality checks:"
 if [ "$USE_UV" = true ]; then
-    echo "     ${GREEN}make quality${NC}   (or: uv run pytest, uv run mypy --strict .)"
+    echo -e "     ${GREEN}make quality${NC}   (or: uv run pytest, uv run mypy --strict .)"
 else
-    echo "     ${GREEN}pytest && mypy --strict .${NC}"
+    echo -e "     ${GREEN}pytest && mypy --strict .${NC}"
 fi
 echo ""
 echo "  4. Or use Docker:"
-echo "     ${GREEN}docker-compose up -d${NC}"
+echo -e "     ${GREEN}docker-compose up -d${NC}"
 echo ""
 echo "📖 Documentation: ./README.md"
 if [ "$USE_UV" = false ]; then
     echo ""
     echo "💡 Tip: Install uv for 10-100x faster dependency management:"
-    echo "   ${BLUE}curl -LsSf https://astral.sh/uv/install.sh | sh${NC}"
+    echo -e "   ${BLUE}curl -LsSf https://astral.sh/uv/install.sh | sh${NC}"
 fi
 echo ""
 echo "Happy prompting! 🚀"
