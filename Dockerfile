@@ -44,13 +44,12 @@ USER app
 
 # Healthcheck: verify server process and dependencies
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD python -c "import sys; \
+    CMD python -c "import os; \
 from pathlib import Path; \
 from prompt_rag import PromptRAG; \
 from mcp.server import Server; \
-prompts_dir = Path('/app/prompts'); \
+prompts_dir = Path(os.environ.get('PROMPTS_DIR', '/app/prompts')); \
 assert prompts_dir.exists(), 'prompts_dir missing'; \
-print('healthy'); \
-sys.exit(0)" || exit 1
+print('healthy')" || exit 1
 
 CMD ["python", "mcp_server.py"]
