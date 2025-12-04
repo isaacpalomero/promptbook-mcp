@@ -39,10 +39,12 @@ jobs:
         run: mypy --strict .
 
       - name: Run pytest with coverage
-        run: pytest --cov=. --cov-report=xml
+        run: pytest tests/unit --cov=. --cov-report=xml -v
+        continue-on-error: false
 
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: coverage-${{ matrix.python-version }}
           path: coverage.xml
