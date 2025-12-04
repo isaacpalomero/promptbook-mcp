@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 import tempfile
 import shutil
+import pytest
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -21,6 +22,7 @@ from config import CONFIG
 
 prompts_dir = CONFIG.prompts_dir
 
+@pytest.mark.asyncio
 async def test_update_prompt_content():
     """Test updating prompt content"""
     print("=" * 70)
@@ -53,6 +55,7 @@ async def test_update_prompt_content():
     print()
 
 
+@pytest.mark.asyncio
 async def test_update_prompt_category():
     """Test changing category (moves file)"""
     print("=" * 70)
@@ -88,6 +91,7 @@ async def test_update_prompt_category():
     print()
 
 
+@pytest.mark.asyncio
 async def test_update_prompt_multiple_fields():
     """Test updating multiple fields at once"""
     print("=" * 70)
@@ -125,6 +129,7 @@ async def test_update_prompt_multiple_fields():
     print()
 
 
+@pytest.mark.asyncio
 async def test_delete_prompt_without_confirm():
     """Test delete requires confirmation"""
     print("=" * 70)
@@ -157,6 +162,7 @@ async def test_delete_prompt_without_confirm():
     print()
 
 
+@pytest.mark.asyncio
 async def test_delete_prompt_with_confirm():
     """Test actual deletion with confirmation"""
     print("=" * 70)
@@ -192,6 +198,7 @@ async def test_delete_prompt_with_confirm():
     print()
 
 
+@pytest.mark.asyncio
 async def test_update_nonexistent_prompt():
     """Test updating non-existent prompt"""
     print("=" * 70)
@@ -210,6 +217,7 @@ async def test_update_nonexistent_prompt():
     print()
 
 
+@pytest.mark.asyncio
 async def test_delete_nonexistent_prompt():
     """Test deleting non-existent prompt"""
     print("=" * 70)
