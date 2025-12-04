@@ -1,6 +1,6 @@
 [project]
 name = "promptbook-mcp"
-version = "0.9.0"
+version = "0.10.0"
 description = "MCP Prompt Library - Organize, search and reuse AI prompts with RAG-powered semantic search"
 readme = "README.md"
 requires-python = ">=3.10"
