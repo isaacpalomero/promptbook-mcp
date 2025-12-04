@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv pip install --system -r requirements.lock
-          uv pip install --system mypy flake8 pytest pytest-cov
+          uv pip install --system mypy flake8 pytest pytest-cov pytest-asyncio
 
       - name: Run flake8
         run: flake8 .
