@@ -23,7 +23,6 @@ from config import CONFIG
 prompts_dir = CONFIG.prompts_dir
 
 @pytest.mark.asyncio
-@pytest.mark.asyncio
 async def test_create_prompt_basic():
     """Test basic prompt creation"""
     print("🧪 Test 1: Basic prompt creation")
@@ -44,7 +43,6 @@ async def test_create_prompt_basic():
     print(f"Output:\n{text}\n")
 
 
-@pytest.mark.asyncio
 @pytest.mark.asyncio
 async def test_create_prompt_explicit_category():
     """Test with explicit category"""
