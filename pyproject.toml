@@ -3,7 +3,7 @@ name = "promptbook-mcp"
 version = "0.10.0"
 description = "MCP Prompt Library - Organize, search and reuse AI prompts with RAG-powered semantic search"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
     {name = "Prompt Library Contributors"}
@@ -14,7 +14,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -60,7 +59,7 @@ addopts = "--verbose --strict-markers"
 
 [tool.mypy]
 strict = true
-python_version = "3.10"
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
