@@ -42,8 +42,14 @@ RUN mkdir -p "$PROMPTS_DIR" "$SESSIONS_DIR" \
 
 USER app
 
-# Healthcheck using the RAG module
+# Healthcheck: verify server process and dependencies
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD python -c "from prompt_rag import PromptRAG; print('healthy')" || exit 1
+    CMD python -c "import os; \
+from pathlib import Path; \
+from prompt_rag import PromptRAG; \
+from mcp.server import Server; \
+prompts_dir = Path(os.environ.get('PROMPTS_DIR', '/app/prompts')); \
+assert prompts_dir.exists(), f'Prompts directory missing: {prompts_dir}'; \
+print('healthy')" || exit 1
 
 CMD ["python", "mcp_server.py"]
