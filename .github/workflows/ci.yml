@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ "3.11", "3.12" ]  # Remove "3.9", "3.10"
+        python-version: [ "3.11", "3.12" ]  # Removed 3.9, 3.10 due to MCP requiring Python >=3.10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
