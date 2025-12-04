@@ -16,7 +16,10 @@ import os
 temp_dir = tempfile.mkdtemp()
 os.environ['PROMPTS_DIR'] = temp_dir
 
-from mcp_server import create_prompt, prompts_dir, initialize_systems
+from mcp_server import create_prompt, initialize_systems
+from config import CONFIG
+
+prompts_dir = CONFIG.prompts_dir
 
 async def test_create_prompt_basic():
     """Test basic prompt creation"""
