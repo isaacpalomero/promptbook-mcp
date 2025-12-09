@@ -62,9 +62,7 @@ try: \
     if not CONFIG.prompts_dir.exists(): \
         raise RuntimeError(f'Config prompts_dir not found: {CONFIG.prompts_dir}'); \
     # Test server instantiation; \
-    test_server = Server('healthcheck-test'); \
-    if not test_server: \
-        raise RuntimeError('Failed to instantiate Server'); \
+    _ = Server('healthcheck-test'); \
 except Exception as e: \
     print(f'Server initialization failed: {e}', file=sys.stderr); \
     sys.exit(1); \
