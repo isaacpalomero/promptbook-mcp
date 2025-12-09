@@ -78,6 +78,16 @@ if [ "$USE_UV" = true ]; then
     uv venv
     print_success "Virtual environment created"
     
+    # Activate virtual environment
+    print_step "Activating virtual environment..."
+    if [ -f ".venv/bin/activate" ]; then
+        source .venv/bin/activate
+        print_success "Virtual environment activated"
+    else
+        print_error "Failed to activate virtual environment"
+        exit 1
+    fi
+    
     print_step "Installing dependencies..."
     uv pip sync requirements.lock
     print_success "Production dependencies installed"
@@ -154,7 +164,7 @@ echo "📚 Next steps:"
 echo ""
 echo "  1. Activate the environment:"
 if [ "$USE_UV" = true ]; then
-    echo -e "     ${GREEN}source .venv/bin/activate${NC}"
+    echo -e "     ${GREEN}source .venv/bin/activate${NC}  (already activated)"
 else
     echo -e "     ${GREEN}source .venv/bin/activate${NC}  (already activated)"
 fi
