@@ -156,7 +156,7 @@ mypy --strict
 pytest --cov=. --cov-report=xml
 ```
 
-The GitHub Actions workflow mirrors these steps on Python 3.9–3.12 and uploads `coverage.xml` for visibility.
+The GitHub Actions workflow mirrors these steps on Python 3.11–3.12 and uploads `coverage.xml` for visibility.
 
 ## 🐳 Docker Commands
 

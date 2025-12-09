@@ -59,7 +59,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ### Prerequisites
 
-- Python 3.9+
+- Python 3.11+
 - Git
 - (Optional) Docker for container testing
 

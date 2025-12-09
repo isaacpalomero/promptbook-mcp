@@ -1,7 +1,7 @@
 # 🤖 Promptbook MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Docker](https://img.shields.io/badge/docker-enabled-brightgreen.svg)](https://www.docker.com/)
 [![MCP](https://img.shields.io/badge/MCP-compatible-purple.svg)](https://modelcontextprotocol.io)
 
@@ -71,7 +71,7 @@ search_prompts("refactor typescript to use dependency injection")
 
 ### Prerequisites
 
-- **uv** (recommended) OR Python 3.9+
+- **uv** (recommended) OR Python 3.11+
 - 2GB RAM minimum
 - macOS, Linux, or Windows
 
@@ -342,7 +342,7 @@ mypy --strict mcp_server.py prompt_rag.py prompt_organizer.py
 - **Test Coverage**: Minimum 80%
 - **Type Safety**: `mypy --strict` must pass
 - **Code Style**: Flake8 compliant
-- **CI Pipeline**: All checks run on Python 3.9-3.12
+- **CI Pipeline**: All checks run on Python 3.11-3.12
 
 A GitHub Actions workflow (`.github/workflows/ci.yml`) runs these checks automatically.
 
