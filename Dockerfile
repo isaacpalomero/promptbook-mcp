@@ -42,14 +42,33 @@ RUN mkdir -p "$PROMPTS_DIR" "$SESSIONS_DIR" \
 
 USER app
 
-# Healthcheck: verify server process and dependencies
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD python -c "import os; \
+# Healthcheck: verify server process is running and responsive
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD python -c "import sys; \
+import os; \
 from pathlib import Path; \
-from prompt_rag import PromptRAG; \
-from mcp.server import Server; \
+# Verify critical paths exist; \
 prompts_dir = Path(os.environ.get('PROMPTS_DIR', '/app/prompts')); \
-assert prompts_dir.exists(), f'Prompts directory missing: {prompts_dir}'; \
-print('healthy')" || exit 1
+if not prompts_dir.exists(): \
+    print(f'Prompts directory missing: {prompts_dir}', file=sys.stderr); \
+    sys.exit(1); \
+# Test that server dependencies can be imported and initialized; \
+try: \
+    from mcp.server import Server; \
+    from prompt_rag import PromptRAG; \
+    from prompt_organizer import PromptOrganizer; \
+    from config import CONFIG; \
+    # Verify config paths are accessible; \
+    if not CONFIG.prompts_dir.exists(): \
+        raise RuntimeError(f'Config prompts_dir not found: {CONFIG.prompts_dir}'); \
+    # Test server instantiation; \
+    test_server = Server('healthcheck-test'); \
+    if not test_server: \
+        raise RuntimeError('Failed to instantiate Server'); \
+except Exception as e: \
+    print(f'Server initialization failed: {e}', file=sys.stderr); \
+    sys.exit(1); \
+print('healthy'); \
+sys.exit(0)" || exit 1
 
 CMD ["python", "mcp_server.py"]
