@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 import tempfile
 import shutil
+import pytest
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -16,11 +17,15 @@ import os
 temp_dir = tempfile.mkdtemp()
 os.environ['PROMPTS_DIR'] = temp_dir
 
-from mcp_server import create_prompt, prompts_dir, initialize_systems
+from mcp_server import create_prompt, initialize_systems
+from config import CONFIG
 
+prompts_dir = CONFIG.prompts_dir
+
+@pytest.mark.asyncio
 async def test_create_prompt_basic():
     """Test basic prompt creation"""
-    print("�� Test 1: Basic prompt creation")
+    print("🧪 Test 1: Basic prompt creation")
 
     result = await create_prompt(
         content="Refactor TypeScript code using SOLID principles and clean code practices.",
@@ -38,6 +43,7 @@ async def test_create_prompt_basic():
     print(f"Output:\n{text}\n")
 
 
+@pytest.mark.asyncio
 async def test_create_prompt_explicit_category():
     """Test with explicit category"""
     print("🧪 Test 2: Explicit category")
@@ -57,6 +63,7 @@ async def test_create_prompt_explicit_category():
     print(f"Output:\n{text}\n")
 
 
+@pytest.mark.asyncio
 async def test_create_prompt_auto_title():
     """Test auto title generation"""
     print("🧪 Test 3: Auto title generation")
@@ -80,6 +87,7 @@ Requirements:
     print(f"Output:\n{text}\n")
 
 
+@pytest.mark.asyncio
 async def test_file_created():
     """Test that file is actually created"""
     print("🧪 Test 4: File creation verification")
@@ -109,6 +117,7 @@ async def test_file_created():
     print(f"✅ File content validated: {latest_file.name}\n")
 
 
+@pytest.mark.asyncio
 async def test_index_json_updated():
     """Test that index.json is updated"""
     print("🧪 Test 5: index.json update")

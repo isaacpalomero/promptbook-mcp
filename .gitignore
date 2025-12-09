@@ -17,3 +17,4 @@ mcp_server.log
 htmlcov/
 .coverage
 *.cover
+ia_docs/

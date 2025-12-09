@@ -1,7 +1,7 @@
 # 🤖 Promptbook MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Docker](https://img.shields.io/badge/docker-enabled-brightgreen.svg)](https://www.docker.com/)
 [![MCP](https://img.shields.io/badge/MCP-compatible-purple.svg)](https://modelcontextprotocol.io)
 
@@ -71,31 +71,58 @@ search_prompts("refactor typescript to use dependency injection")
 
 ### Prerequisites
 
-- Python 3.9+ OR Docker
+- **uv** (recommended) OR Python 3.11+
 - 2GB RAM minimum
 - macOS, Linux, or Windows
 
-### Detailed Setup
+### Method 1: Using uv (Recommended ⚡)
 
-#### Automated Setup (Recommended)
+**Why uv?** 10-100x faster installs, reproducible environments, zero dependency conflicts.
+
+```bash
+# 1. Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Clone repository
+git clone https://github.com/isaacpalomero/promptbook-mcp.git
+cd promptbook-mcp
+
+# 3. Setup environment (creates venv + installs deps)
+./setup-uv.sh
+
+# 4. Activate and run
+source .venv/bin/activate
+python mcp_server.py
+```
+
+**Development workflow:**
+```bash
+make install-dev    # Setup dev environment
+make test          # Run tests with coverage
+make typecheck     # Run mypy --strict
+make lint          # Run flake8
+make quality       # Run all checks
+```
+
+### Method 2: Traditional Python
 
 ```bash
 # Clone repository
 git clone https://github.com/isaacpalomero/promptbook-mcp.git
 cd promptbook-mcp
 
-# Run setup script
-chmod +x setup.sh
-./setup.sh
-
-# Activate virtual environment
+# Create virtual environment
+python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.lock
 
 # Start server
 python mcp_server.py
 ```
 
-#### Docker Method
+### Method 3: Docker
 
 ```bash
 # Clone repository
@@ -315,7 +342,7 @@ mypy --strict mcp_server.py prompt_rag.py prompt_organizer.py
 - **Test Coverage**: Minimum 80%
 - **Type Safety**: `mypy --strict` must pass
 - **Code Style**: Flake8 compliant
-- **CI Pipeline**: All checks run on Python 3.9-3.12
+- **CI Pipeline**: All checks run on Python 3.11-3.12
 
 A GitHub Actions workflow (`.github/workflows/ci.yml`) runs these checks automatically.
 
