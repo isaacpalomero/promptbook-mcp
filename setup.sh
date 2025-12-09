@@ -50,7 +50,7 @@ fi
 # Check Python version
 print_step "Checking Python version..."
 if ! command -v python3 &> /dev/null; then
-    print_error "Python 3 not found. Please install Python 3.10 or higher."
+    print_error "Python 3 not found. Please install Python 3.11 or higher."
     exit 1
 fi
 
@@ -58,8 +58,8 @@ PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
 PYTHON_MAJOR=$(echo $PYTHON_VERSION | cut -d'.' -f1)
 PYTHON_MINOR=$(echo $PYTHON_VERSION | cut -d'.' -f2)
 
-if [ "$PYTHON_MAJOR" -lt 3 ] || { [ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 10 ]; }; then
-    print_error "Python 3.10+ required. Found: $PYTHON_VERSION"
+if [ "$PYTHON_MAJOR" -lt 3 ] || { [ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 11 ]; }; then
+    print_error "Python 3.11+ required. Found: $PYTHON_VERSION"
     exit 1
 fi
 
