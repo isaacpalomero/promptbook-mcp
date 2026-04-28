@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/isaacpalomero-promptbook-mcp-badge.png)](https://mseep.ai/app/isaacpalomero-promptbook-mcp)
+
 # 🤖 Promptbook MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
